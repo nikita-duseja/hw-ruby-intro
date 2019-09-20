@@ -11,10 +11,10 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  search = {}
+  sumSearch= {}
   arr.each_with_index do |num, i|
-    return true unless search[n - num].nil?
-    search[num] = i
+    return true unless sumSearch[n - num].nil?
+    sumSearch[num] = i
   end
   false
 end
@@ -29,8 +29,8 @@ def starts_with_consonant? s
   if s.length == 0
     false
   else
-    verify = (s =~ /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/)
-    !verify.nil? && verify == 0
+    match = (s =~ /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/)
+    !match.nil? && match == 0
   end
 end  
 
@@ -43,8 +43,8 @@ end
 # Part 3
 
 class BookInStock
-  attr_accessor :isbn
-  attr_accessor :price
+  attr_reader :isbn,:price
+  attr_writer :price,:isbn
 
   def initialize(isbn, price)
     raise ArgumentError if (isbn.empty? || price <= 0)
